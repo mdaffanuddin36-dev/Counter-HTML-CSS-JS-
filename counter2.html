@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+</head>
+<body>
+
+    <button id="switch" class="switch" onclick="toggleSwitch()">🔺</button>
+
+    <div id="counter">
+        <h1>Counter</h1>
+        <p>Count: <span id="count">0</span></p>
+        <p>➖➖➖➖➖➖➖➖➖➖➖➖</p>
+
+        <button onclick="increment()">Increment</button>
+        <button onclick="decrement()">Decrement</button>
+        <button onclick="reset()">Reset</button>
+
+    </div>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, midnightblue, black);
+            min-height: 100vh;
+            text-align: center;
+            margin: 0;
+            padding: 50px 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        #counter {
+            max-width: 450px;
+            margin: 30px auto;
+            padding: 35px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #fff;
+            background: linear-gradient(145deg, #252545, #111122);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+
+            /* Animation */
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            transition: opacity 0.5s ease,
+                        transform 0.5s ease,
+                        visibility 0.5s ease;
+        }
+
+        /* Hidden state */
+        #counter.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+        }
+
+        #counter h1 {
+            font-size: 35px;
+            color: #8faaff;
+        }
+
+        #counter p {
+            font-size: 24px;
+            margin: 25px 0;
+        }
+
+        #count {
+            color: #00e5ff;
+            font-weight: bold;
+            font-size: 32px;
+        }
+
+        #switch {
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid #aaa;
+            background: linear-gradient(135deg, #006400, #1a4602ab);
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        #switch:hover {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        button:not(#switch) {
+            margin: 7px;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: 1px solid #5268c9;
+            background: #e8ecff;
+            color: midnightblue;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:not(#switch):hover {
+            background: midnightblue;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(43, 121, 143, 0.6);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+    </style>
+
+    <script>
+        let count = 0;
+
+        function increment() {
+            count++;
+            document.getElementById("count").textContent = count;
+        }
+
+        function decrement() {
+            count--;
+            document.getElementById("count").textContent = count;
+        }
+
+        function reset() {
+            count = 0;
+            document.getElementById("count").textContent = count;
+        }
+
+        function toggleSwitch() {
+            const switchButton = document.getElementById("switch");
+            const counterDiv = document.getElementById("counter");
+
+            if (switchButton.textContent === "🔺") {
+                switchButton.textContent = "🔻";
+                counterDiv.classList.add("hidden");
+            } else {
+                switchButton.textContent = "🔺";
+                counterDiv.classList.remove("hidden");
+            }
+        }
+
+    </script>
+
+</body>
+</html>
